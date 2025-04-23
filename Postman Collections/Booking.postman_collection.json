@@ -988,6 +988,7 @@
 							"    // Safely handle optional nested fields\r",
 							"    const requestCheckin = requestBody.bookingdates?.checkin;\r",
 							"    const requestCheckout = requestBody.bookingdates?.checkout;\r",
+							"    /*This line is trying to get the value of checkin from requestBody.bookingdates. But it does it safely using ?. so that if bookingdates is undefined or null, it won’t throw an error—it'll just return undefined instead */\r",
 							"\r",
 							"    const array1 = [\r",
 							"        requestBody.firstname,\r",
