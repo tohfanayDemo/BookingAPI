@@ -1018,6 +1018,44 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f9ace85c-d04c-4db9-8f2b-0fd5af0fb3f2",
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: 'https://restful-booker.herokuapp.com/auth',\r",
+							"    method: 'POST',\r",
+							"    header:{ \r",
+							"        'Content-Type': 'application/json',\r",
+							"    },\r",
+							"    body:{\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                    \"username\" : \"admin\",\r",
+							"                    \"password\" : \"password123\"\r",
+							"                })\r",
+							"    }\r",
+							"      \r",
+							"},  function(err, response){\r",
+							"    if(err){\r",
+							"        console.log(err);\r",
+							"        return;\r",
+							"    }\r",
+							"    else{\r",
+							"        const authResponse = response.json();\r",
+							"        const tokenId = authResponse.token;\r",
+							"\r",
+							"        pm.variables.set(\"token\",tokenId);\r",
+							"    }\r",
+							"}\r",
+							")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
 			],
 			"id": "03be97c3-50a4-452f-b134-b3f88528a0e2",
