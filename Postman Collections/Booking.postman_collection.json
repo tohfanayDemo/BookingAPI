@@ -2,8 +2,7 @@
 	"info": {
 		"_postman_id": "8ae0a803-84e5-450a-a9f8-3d14f1d9be78",
 		"name": "Booking",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19273618"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -12,6 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "878eabfa-ea6f-477f-88c4-aba2cd58d6c6",
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
@@ -23,6 +23,10 @@
 					}
 				}
 			],
+			"id": "c9c9e7cf-0aee-4d2e-a9e7-0a33d303e3c9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "POST",
 				"header": [
@@ -40,15 +44,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{baseURL}}/auth",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"auth"
-					]
-				}
+				"url": "{{baseURL}}/auth"
 			},
 			"response": []
 		},
@@ -58,6 +54,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "2cd7a887-549c-491b-89f6-291f0f5127c0",
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
@@ -116,18 +113,14 @@
 					}
 				}
 			],
+			"id": "20eff09d-51ca-4c9d-873e-ff26570d1a76",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/booking",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"booking"
-					]
-				}
+				"url": "{{baseURL}}/booking"
 			},
 			"response": []
 		},
@@ -137,6 +130,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "67c015cb-60ed-432c-8c94-96d1a82588f5",
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
@@ -294,6 +288,10 @@
 					}
 				}
 			],
+			"id": "2df8ce7f-eb68-4983-86a3-c25998e9f3fe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -306,18 +304,11 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{baseURL}}/booking",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"booking"
-					]
-				}
+				"url": "{{baseURL}}/booking"
 			},
 			"response": [
 				{
+					"id": "0418101d-ad84-4605-981d-7f7edad6091b",
 					"name": "GetBookingsById Copy",
 					"originalRequest": {
 						"method": "POST",
@@ -331,18 +322,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "https://restful-booker.herokuapp.com/booking",
-							"protocol": "https",
-							"host": [
-								"restful-booker",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"booking"
-							]
-						}
+						"url": "https://restful-booker.herokuapp.com/booking"
 					},
 					"status": "OK",
 					"code": 200,
@@ -394,6 +374,7 @@
 						}
 					],
 					"cookie": [],
+					"responseTime": null,
 					"body": "{\n    \"bookingid\": 3255,\n    \"booking\": {\n        \"firstname\": \"Jim\",\n        \"lastname\": \"Brown\",\n        \"totalprice\": 111,\n        \"depositpaid\": true,\n        \"bookingdates\": {\n            \"checkin\": \"2018-01-01\",\n            \"checkout\": \"2019-01-01\"\n        },\n        \"additionalneeds\": \"Lunch\"\n    }\n}"
 				}
 			]
@@ -404,6 +385,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "51f8a41e-b449-430a-a71d-f41e068e9c52",
 						"exec": [
 							"const resposne = pm.response.json();\r",
 							"\r",
@@ -497,22 +479,14 @@
 					}
 				}
 			],
+			"id": "d7ad4aed-1949-4645-806a-b266ed71e477",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/{{bookingId}}",
-					"protocol": "https",
-					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"booking",
-						"{{bookingId}}"
-					]
-				}
+				"url": "https://restful-booker.herokuapp.com/booking/{{bookingId}}"
 			},
 			"response": []
 		},
@@ -522,6 +496,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bcd6be8b-c032-44b5-a4ea-3d6b805d207a",
 						"exec": [
 							"// Get Booking object from POST call from Collection Variable\r",
 							"const booking = JSON.parse(pm.collectionVariables.get(\"booking\"));\r",
@@ -539,6 +514,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "59ba5e25-eae9-4c78-9a20-cc7e9daeed2b",
 						"exec": [
 							"const response = pm.response.json();\r",
 							"const responseSize = response.length;\r",
@@ -627,6 +603,10 @@
 					}
 				}
 			],
+			"id": "869d4997-8717-4842-8ebd-8ba59cffc2d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -661,6 +641,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "97dcf5dc-3e18-4aee-987f-3ce8bd440b66",
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
@@ -781,6 +762,10 @@
 					}
 				}
 			],
+			"id": "39ba8d2c-77c3-4e6f-a4ee-3c0fd60e88aa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -799,16 +784,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{baseURL}}/booking/{{bookingId}}",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"booking",
-						"{{bookingId}}"
-					]
-				}
+				"url": "{{baseURL}}/booking/{{bookingId}}"
 			},
 			"response": []
 		},
@@ -818,6 +794,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "682b6490-3914-42df-aebd-23ef54cc4c6c",
 						"exec": [
 							"const booking = JSON.parse(pm.collectionVariables.get(\"booking\"));\r",
 							"pm.variables.set(\"bookingFirstName\",booking.firstname)\r",
@@ -831,6 +808,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "574a1c36-f570-4009-a9b9-1066cd121571",
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
@@ -883,6 +861,10 @@
 					}
 				}
 			],
+			"id": "a2fa4646-788b-4bd8-ac85-896eb3aa1917",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -913,6 +895,10 @@
 		},
 		{
 			"name": "PartialUpdateBooking",
+			"id": "03be97c3-50a4-452f-b134-b3f88528a0e2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -931,24 +917,16 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/{{bookingId}}",
-					"protocol": "https",
-					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"booking",
-						"{{bookingId}}"
-					]
-				}
+				"url": "{{baseURL}}/booking/{{bookingId}}"
 			},
 			"response": []
 		},
 		{
 			"name": "DeleteBooking",
+			"id": "ab2f599e-e43a-44bd-8fcb-72ca1b037f4c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -961,27 +939,7 @@
 						"value": "token={{token}}"
 					}
 				],
-				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking/{{bookingId}}",
-					"protocol": "https",
-					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"booking",
-						"{{bookingId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "BookingAPI",
-			"request": {
-				"method": "GET",
-				"header": []
+				"url": "https://restful-booker.herokuapp.com/booking/{{bookingId}}"
 			},
 			"response": []
 		}
@@ -990,6 +948,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
+				"id": "5a2f0b38-b5a5-4b66-b137-8ccbe749a8e2",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1000,6 +959,7 @@
 		{
 			"listen": "test",
 			"script": {
+				"id": "8403242b-ec20-41d2-bfea-a0b6281b5283",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
