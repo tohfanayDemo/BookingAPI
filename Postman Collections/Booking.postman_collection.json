@@ -1158,6 +1158,28 @@
 				"url": "https://restful-booker.herokuapp.com/booking/{{bookingId}}"
 			},
 			"response": []
+		},
+		{
+			"name": "DeleteBooking Copy",
+			"id": "452212ef-d314-4fa0-8020-c12928abec85",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}"
+					}
+				],
+				"url": "https://restful-booker.herokuapp.com/booking/1951"
+			},
+			"response": []
 		}
 	],
 	"event": [
