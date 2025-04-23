@@ -985,11 +985,11 @@
 							"    const rawRequestBody = pm.request.body.raw;\r",
 							"    const requestBody = JSON.parse(rawRequestBody);\r",
 							"\r",
-							"    const array1 = [requestBody.firstname,requestBody.lastname,requestBody.totalprice,requestBody.depositpaid,requestBody.bookingdates.checkin,\r",
+							"    const array1 = [requestBody.firstname,requestBody.lastname,requestBody.totalprice,requestBody.depositpaid, /*requestBody.bookingdates.checkin,*/\r",
 							"                    requestBody.bookingdates.checkout,requestBody.additionalneeds] ;\r",
 							"    console.log(array1);\r",
 							"\r",
-							"    const array2 = [firstname, lastname, totalprice, depositpaid, checkin, checkout, additionalneeds];\r",
+							"    const array2 = [firstname, lastname, totalprice, depositpaid, /*checkin,*/ checkout, additionalneeds];\r",
 							"    console.log(array2);\r",
 							"\r",
 							"\r",
@@ -1126,7 +1126,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5a2f0b38-b5a5-4b66-b137-8ccbe749a8e2",
+				"id": "494d278c-648b-45e0-a88a-2ef351430516",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1137,11 +1137,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8403242b-ec20-41d2-bfea-a0b6281b5283",
+				"id": "4e853116-4f06-45e9-b19c-ebf0f4cce93d",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					""
+					"//Note: change all collection variable to local variables to give highest level of access"
 				]
 			}
 		}
