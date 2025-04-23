@@ -415,7 +415,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "https://restful-booker.herokuapp.com/booking/{{bookingId}}"
+				"url": "{{baseURL}}/booking/{{bookingId}}"
 			},
 			"response": []
 		},
@@ -540,12 +540,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking?checkin={{checkin}}&checkout={{checkout}}",
-					"protocol": "https",
+					"raw": "{{baseURL}}/booking?checkin={{checkin}}&checkout={{checkout}}",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{baseURL}}"
 					],
 					"path": [
 						"booking"
@@ -836,12 +833,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restful-booker.herokuapp.com/booking?firstname={{bookingFirstName}}&lastname={{bookingLastName}}",
-					"protocol": "https",
+					"raw": "{{baseURL}}/booking?firstname={{bookingFirstName}}&lastname={{bookingLastName}}",
 					"host": [
-						"restful-booker",
-						"herokuapp",
-						"com"
+						"{{baseURL}}"
 					],
 					"path": [
 						"booking"
