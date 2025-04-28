@@ -18,7 +18,7 @@
 							"console.log(response.token)\r",
 							"pm.variables.set(\"token\", response.token)\r",
 							"\r",
-							"console.log(pm.collectionVariables.get(\"token1\"))\r",
+							"//console.log(pm.collectionVariables.get(\"token1\"))\r",
 							"\r",
 							""
 						],
@@ -61,12 +61,8 @@
 						"id": "878eabfa-ea6f-477f-88c4-aba2cd58d6c6",
 						"exec": [
 							"setTimeout(() => {}, 1000);\r",
-							"\r",
-							"//INCORRECT ENDPOINT SHOULD GIVE 404 BOT FOUND. DEFECT --> GETTING 401 UNAUTHORIZED\r",
-							"\r",
 							"const expStatusCode = pm.variables.get(\"statusCode\");\r",
 							"const expStatusLine = pm.variables.get(\"statusLine\");\r",
-							"const expHttpMethod = pm.variables.get(\"httpMethod\");\r",
 							"const scenarioName = pm.variables.get(\"scenarioName\");\r",
 							"const expMessage = pm.variables.get(\"message\");\r",
 							"\r",
@@ -86,17 +82,10 @@
 							"if(scenarioName.includes(\"Incorrect Credentials\")) {\r",
 							"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
 							"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
-							"        pm.expect(pm.response.json().message).to.include(`Request method '${expHttpMethod}' is not supported`);\r",
-							"        pm.expect(pm.response.json().success).to.eql(false);\r",
-							"        \r",
+							"        pm.expect(pm.response.json().reason).to.eql(expMessage);       \r",
 							"    });\r",
 							"}\r",
-							"\r",
-							"/*json response:\r",
-							"{\r",
-							"    \"reason\": \"Bad credentials\"\r",
-							"}\r",
-							"*/"
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -147,7 +136,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n// {\n//     \"username\" : \"{{username}}\",\n//     \"password\" : \"{{password}}\"\n// }",
+					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
