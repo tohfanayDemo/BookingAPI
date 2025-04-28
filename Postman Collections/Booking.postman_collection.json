@@ -37,7 +37,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n{\n    \"username\" : \"\",\n    \"password\" : \"bla bla\"\n}",
+					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -87,7 +87,7 @@
 						}
 					}
 				},
-				"url": "{{baseURL}}/auth"
+				"url": "{{baseURL}}/{{endPoint}}"
 			},
 			"response": []
 		},
