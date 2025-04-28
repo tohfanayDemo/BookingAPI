@@ -1479,7 +1479,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2adfd305-7c4b-4f70-86ba-27d697a52136",
+				"id": "df6a13d5-ba22-4a2d-8957-2b3f0adb5c37",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1507,7 +1507,9 @@
 					"        \r",
 					"    if (currentDataSet) {\r",
 					"        Object.entries(currentDataSet).forEach(([key, value]) => {\r",
-					"            pm.collectionVariables.set(key,value)\r",
+					"            //pm.collectionVariables.set(key,value)\r",
+					"            pm.variables.set(key,value)\r",
+					"\r",
 					"        });\r",
 					"\r",
 					"        pm.collectionVariables.set(\"requestData\", JSON.stringify(requestData));\r",
@@ -1526,7 +1528,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "9ae8acd7-150f-47f1-a6cd-7e7f75c4c03b",
+				"id": "41bde81f-da9f-413d-a163-acfcf46ae618",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
