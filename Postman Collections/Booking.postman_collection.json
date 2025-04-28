@@ -37,7 +37,50 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n{\n    \"username\" : \"bla bla\",\n    \"password\" : \"bla bla\"\n}",
+					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n{\n    \"username\" : \"\",\n    \"password\" : \"bla bla\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/auth"
+			},
+			"response": []
+		},
+		{
+			"name": "Negative - CreateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "878eabfa-ea6f-477f-88c4-aba2cd58d6c6",
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"console.log(response.token)\r",
+							"pm.variables.set(\"token\", response.token)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "4b9d46d0-616a-497f-a02c-509aa33a93a5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "// {\n//     \"username\" : \"{{username}}\",\n//     \"password\" : \"{{password}}\"\n// }\n\n{\n    \"username\" : \"bla bla\",\n    \"password\" : \"\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
