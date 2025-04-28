@@ -191,6 +191,26 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b6fe22b3-c60c-4a11-9549-45791219ffc0",
+						"exec": [
+							"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
+							"console.log(\"Scenario Name \"+scenarioName)\r",
+							"pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
+							" pm.variables.set(\"endPoint\", pm.collectionVariables.get('endPoint'))\r",
+							"\r",
+							"if(scenarioName === \"Incorrect BaseURL\"){\r",
+							"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
 			],
 			"id": "c605c2c4-0b76-45c4-85ba-443077b94d69",
