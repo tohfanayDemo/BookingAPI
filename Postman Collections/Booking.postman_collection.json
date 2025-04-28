@@ -99,7 +99,9 @@
 							"//SET TOTAL COUNT\r",
 							"console.log(response.length)\r",
 							"const totalCountBeforeBooking = response.length;\r",
-							"pm.collectionVariables.set(\"totalCountBeforeBooking\", totalCountBeforeBooking)\r",
+							"//pm.collectionVariables.set(\"totalCountBeforeBooking\", totalCountBeforeBooking)\r",
+							"pm.variables.set(\"totalCountBeforeBooking\", totalCountBeforeBooking)\r",
+							"\r",
 							"\r",
 							"\r",
 							"\r",
@@ -267,7 +269,8 @@
 							"\r",
 							"    //Set bookingId at collection level\r",
 							"    const bookingID = response.bookingid\r",
-							"    pm.collectionVariables.set(\"bookingId\", bookingID)\r",
+							"    //pm.collectionVariables.set(\"bookingId\", bookingID)\r",
+							"    pm.variables.set(\"bookingId\", bookingID)\r",
 							"\r",
 							"    //SET VALUE AT RUN TIME\r",
 							"    const booking = {\r",
@@ -280,11 +283,19 @@
 							"        \"additionalneeds\": additionalneeds\r",
 							"    }\r",
 							"\r",
-							"    pm.collectionVariables.set(\"booking\", JSON.stringify(booking));\r",
+							"    //pm.collectionVariables.set(\"booking\", JSON.stringify(booking));\r",
+							"    pm.variables.set(\"booking\", JSON.stringify(booking));\r",
 							""
 						],
 						"type": "text/javascript",
 						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -1146,13 +1157,13 @@
 						"exec": [
 							"//POSITIVE TEST VALIDATION\r",
 							"    //1. Status\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(201);\r",
+							"    pm.test(\"Status code is 204\", function () {\r",
+							"        pm.response.to.have.status(204);\r",
 							"    });\r",
 							"\r",
 							"    //2. Status Line\r",
-							"    pm.test(\"Status message is OK\", function () {\r",
-							"        pm.response.to.have.status(\"Created\");\r",
+							"    pm.test(\"Status message is No Content\", function () {\r",
+							"        pm.response.to.have.status(\"No Content\");\r",
 							"    });\r",
 							"\r",
 							"    //3. Test for Content-Type header having a particular value\r",
