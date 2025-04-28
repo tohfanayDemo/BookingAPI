@@ -1230,18 +1230,6 @@
 				"url": "{{baseURL}}/booking/{{bookingId}}"
 			},
 			"response": []
-		},
-		{
-			"name": "New Request",
-			"id": "03d811c2-f2eb-4657-b609-bdd2629e2fb2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
 		}
 	],
 	"event": [
