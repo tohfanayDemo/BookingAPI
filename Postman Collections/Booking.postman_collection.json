@@ -102,7 +102,7 @@
 							"\r",
 							"//Tweak data based on scenario needs\r",
 							"if(scenarioName === \"Incorrect Http Method\"){\r",
-							"    pm.request.method = pm.collectionVariables.get(\"httpMethod\");\r",
+							"    pm.request.method = pm.variables.get(\"httpMethod\");\r",
 							"}\r",
 							"else if(scenarioName === \"Incorrect Content-Type\"){\r",
 							"    var contentType = \"application/xml\"; \r",
@@ -278,13 +278,13 @@
 					"script": {
 						"id": "b6fe22b3-c60c-4a11-9549-45791219ffc0",
 						"exec": [
-							"var scenarioName = pm.collectionVariables.get(\"scenarioName\");\r",
-							"console.log(\"Scenario Name \"+scenarioName)\r",
-							"pm.request.method = pm.collectionVariables.get(\"httpMethod\");;\r",
-							" pm.variables.set(\"endPoint\", pm.collectionVariables.get('endPoint'))\r",
+							"setTimeout(() => {}, 1000);\r",
+							"var scenarioName = pm.variables.get(\"scenarioName\");\r",
+							"console.log(\"Inside pre-requisite --> Scenario Name \"+scenarioName)\r",
 							"\r",
-							"if(scenarioName === \"Incorrect BaseURL\"){\r",
-							"    pm.variables.set(\"baseURL\", pm.collectionVariables.get('baseURL'))\r",
+							"//Tweak data based on scenario needs\r",
+							"if(scenarioName === \"Incorrect Http Method\"){\r",
+							"    pm.request.method = pm.variables.get(\"httpMethod\");\r",
 							"}\r",
 							"\r",
 							""
