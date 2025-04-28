@@ -37,7 +37,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "// {\n//     \"username\" : \"{{username}}\",\n//     \"password\" : \"{{password}}\"\n// }\n\n{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"bla bla\"\n}\n\n/*json response:\n{\n    \"reason\": \"Bad credentials\"\n}\n*/\n",
+					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n\n\n\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,8 +58,11 @@
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
-							"console.log(response.token)\r",
-							"pm.variables.set(\"token\", response.token)"
+							"/*json response:\r",
+							"{\r",
+							"    \"reason\": \"Bad credentials\"\r",
+							"}\r",
+							"*/"
 						],
 						"type": "text/javascript",
 						"packages": {}
