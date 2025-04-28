@@ -122,7 +122,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{baseURL}}/booking"
+				"url": "{{baseURL}}/{{endPoint}}"
 			},
 			"response": []
 		},
