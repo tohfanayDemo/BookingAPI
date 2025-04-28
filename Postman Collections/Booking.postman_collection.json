@@ -294,8 +294,12 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"packages": {},
-						"type": "text/javascript"
+						"id": "27585bb0-45cf-42e7-a946-9d6ac351cf58",
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -308,7 +312,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\" : \"Jimm\",\r\n    \"lastname\" : \"Brownn\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2020-04-23\",\r\n        \"checkout\" : \"2025-05-01\"\r\n    },\r\n    \"additionalneeds\" : \"Lunch\"\r\n}",
+					"raw": "// {\r\n//     \"firstname\" : \"Jimm\",\r\n//     \"lastname\" : \"Brownn\",\r\n//     \"totalprice\" : 111,\r\n//     \"depositpaid\" : true,\r\n//     \"bookingdates\" : {\r\n//         \"checkin\" : \"2020-04-23\",\r\n//         \"checkout\" : \"2025-05-01\"\r\n//     },\r\n//     \"additionalneeds\" : \"Lunch\"\r\n// }\r\n\r\n{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checheckoutckin}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1236,10 +1240,46 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2d87ba5c-c4fa-4cdd-8fbf-a8000abded01",
+				"id": "2adfd305-7c4b-4f70-86ba-27d697a52136",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
+					"if (typeof pm.variables.get('requestData') !== 'object') {\r",
+					"    pm.variables.set('requestData', pm.iterationData.toObject()); \r",
+					"}\r",
+					"\r",
+					"const requestData = pm.variables.get('requestData');\r",
+					"\r",
+					"if (typeof requestData !== 'object' || Object.keys(requestData).length === 0) {\r",
+					"    console.log('No external data provided/data set is empty');\r",
+					"    return;\r",
+					"}\r",
+					"\r",
+					"const currentRequest = requestData.requests.find(({ name }) => name === pm.info.requestName); \r",
+					"\r",
+					"if (!currentRequest) {\r",
+					"    console.log(`Request ${pm.info.requestName} has no data.`);\r",
+					"    return;\r",
+					"}\r",
+					"\r",
+					"if (currentRequest && currentRequest.data && currentRequest.data.length > 0) {\r",
+					"    console.log(\"Size of current request data set = \" + currentRequest.data.length)\r",
+					"    const currentDataSet = currentRequest.data.shift(); //object\r",
+					"        \r",
+					"    if (currentDataSet) {\r",
+					"        Object.entries(currentDataSet).forEach(([key, value]) => {\r",
+					"            pm.collectionVariables.set(key,value)\r",
+					"        });\r",
+					"\r",
+					"        pm.collectionVariables.set(\"requestData\", JSON.stringify(requestData));\r",
+					"\r",
+					"        if (currentRequest.data.length > 0) {\r",
+					"            pm.execution.setNextRequest(pm.info.requestName);\r",
+					"        }\r",
+					"    } else {\r",
+					"        console.error('No variables found for this request.');\r",
+					"    }\r",
+					"}\r",
 					""
 				]
 			}
@@ -1247,12 +1287,12 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "6990cb92-001f-4354-9868-34acc15860ec",
+				"id": "9ae8acd7-150f-47f1-a6cd-7e7f75c4c03b",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
 					"/* To-do List: \r",
-					"1)change all collection variable to local variables to give highest level of access\r",
+					"1)change all collection variable to local variables to give highest level of access - DONE\r",
 					"2) implement data driven testing\r",
 					"3) implement negative scenarios\r",
 					"4) code refactor --> common functions\r",
