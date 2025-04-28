@@ -16,7 +16,7 @@
 							"const response = pm.response.json();\r",
 							"\r",
 							"console.log(response.token)\r",
-							"pm.collectionVariables.set(\"token\", response.token)"
+							"pm.variables.set(\"token\", response.token)"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -1209,6 +1209,18 @@
 					}
 				],
 				"url": "{{baseURL}}/booking/{{bookingId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"id": "03d811c2-f2eb-4657-b609-bdd2629e2fb2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
