@@ -41,7 +41,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n// {\n//     \"username\" : \"{{username}}\",\n//     \"password\" : \"meow meow\"\n// }\n\n\n\n",
+					"raw": "{\n    \"username\" : \"{{username}}\",\n    \"password\" : \"{{password}}\"\n}\n\n\n\n\n",
 					"options": {
 						"raw": {
 							"language": "json"
