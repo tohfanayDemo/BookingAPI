@@ -1419,7 +1419,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "df6a13d5-ba22-4a2d-8957-2b3f0adb5c37",
+				"id": "aeb10887-5e44-4545-b193-eece55e5baee",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1468,14 +1468,14 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "41bde81f-da9f-413d-a163-acfcf46ae618",
+				"id": "fce647aa-934d-4d16-9974-8c7c9723eee8",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
 					"/* To-do List: \r",
 					"1)change all collection variable to local variables to give highest level of access - DONE\r",
-					"2) implement data driven testing\r",
-					"3) implement negative scenarios\r",
+					"2) implement data driven testing -- IN PROGRESS\r",
+					"3) implement negative scenarios -- IN PROGRESS\r",
 					"4) code refactor --> common functions\r",
 					"5) setup environment data dynamically\r",
 					"*/"
