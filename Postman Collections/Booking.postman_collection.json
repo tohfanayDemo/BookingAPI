@@ -936,7 +936,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "// {\r\n//     \"firstname\" : \"Jimupdate\",\r\n//     \"lastname\" : \"update\",\r\n//     \"totalprice\" : 100,\r\n//     \"depositpaid\" : true,\r\n//     \"bookingdates\" : {\r\n//         \"checkin\" : \"2018-01-01\",\r\n//         \"checkout\" : \"2019-02-01\"\r\n//     },\r\n//     \"additionalneeds\" : \"Dinner\"\r\n// }\r\n\r\n{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}\r\n",
+					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1419,7 +1419,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "aeb10887-5e44-4545-b193-eece55e5baee",
+				"id": "7dd8bc92-064e-4266-8419-de7e13056410",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1468,49 +1468,19 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "fce647aa-934d-4d16-9974-8c7c9723eee8",
+				"id": "e8adfab2-c339-4aa5-af43-477d46e848af",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
 					"/* To-do List: \r",
 					"1)change all collection variable to local variables to give highest level of access - DONE\r",
-					"2) implement data driven testing -- IN PROGRESS\r",
+					"2) implement data driven testing -- DONE\r",
 					"3) implement negative scenarios -- IN PROGRESS\r",
 					"4) code refactor --> common functions\r",
 					"5) setup environment data dynamically\r",
 					"*/"
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "bookingId",
-			"value": ""
-		},
-		{
-			"key": "totalCountBeforeBooking",
-			"value": ""
-		},
-		{
-			"key": "booking",
-			"value": ""
-		},
-		{
-			"key": "bookingFirstName",
-			"value": ""
-		},
-		{
-			"key": "bookingLastName",
-			"value": ""
-		},
-		{
-			"key": "token",
-			"value": ""
-		},
-		{
-			"key": "requestData",
-			"value": ""
 		}
 	]
 }
