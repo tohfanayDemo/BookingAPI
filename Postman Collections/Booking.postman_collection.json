@@ -936,7 +936,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\" : \"Jimupdate\",\r\n    \"lastname\" : \"update\",\r\n    \"totalprice\" : 100,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-02-01\"\r\n    },\r\n    \"additionalneeds\" : \"Dinner\"\r\n}",
+					"raw": "// {\r\n//     \"firstname\" : \"Jimupdate\",\r\n//     \"lastname\" : \"update\",\r\n//     \"totalprice\" : 100,\r\n//     \"depositpaid\" : true,\r\n//     \"bookingdates\" : {\r\n//         \"checkin\" : \"2018-01-01\",\r\n//         \"checkout\" : \"2019-02-01\"\r\n//     },\r\n//     \"additionalneeds\" : \"Dinner\"\r\n// }\r\n\r\n{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checheckoutckin}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
