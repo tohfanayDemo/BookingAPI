@@ -491,7 +491,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\" : \"Jimm\",\r\n    \"lastname\" : \"Brownn\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2020-04-23\",\r\n        \"checkout\" : \"2025-05-01\"\r\n    },\r\n    \"additionalneeds\" : \"Lunch\"\r\n}\r\n\r\n// {\r\n//     \"firstname\" : \"{{firstname}}\",\r\n//     \"lastname\" : \"{{lastname}}\",\r\n//     \"totalprice\" : {{totalprice}},\r\n//     \"depositpaid\" : {{depositpaid}},\r\n//     \"bookingdates\" : {\r\n//         \"checkin\" : \"{{checkin}}\",\r\n//         \"checkout\" : \"{{checheckoutckin}}\"\r\n//     },\r\n//     \"additionalneeds\" : \"{{additionalneeds}}\"\r\n// }",
+					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
