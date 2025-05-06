@@ -296,14 +296,6 @@
 					"script": {
 						"id": "b6fe22b3-c60c-4a11-9549-45791219ffc0",
 						"exec": [
-							"setTimeout(() => {}, 1000);\r",
-							"var scenarioName = pm.variables.get(\"scenarioName\");\r",
-							"console.log(\"Inside pre-requisite --> Scenario Name \"+scenarioName)\r",
-							"\r",
-							"//Tweak data based on scenario needs\r",
-							"if(scenarioName === \"Incorrect Http Method\"){\r",
-							"    pm.request.method = pm.variables.get(\"httpMethod\");\r",
-							"}\r",
 							"\r",
 							""
 						],
@@ -1437,48 +1429,10 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "7dd8bc92-064e-4266-8419-de7e13056410",
+				"id": "164f651d-a7c2-4122-b550-b2f8f0951098",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					"if (typeof pm.variables.get('requestData') !== 'object') {\r",
-					"    pm.variables.set('requestData', pm.iterationData.toObject()); \r",
-					"}\r",
-					"\r",
-					"const requestData = pm.variables.get('requestData');\r",
-					"\r",
-					"if (typeof requestData !== 'object' || Object.keys(requestData).length === 0) {\r",
-					"    console.log('No external data provided/data set is empty');\r",
-					"    return;\r",
-					"}\r",
-					"\r",
-					"const currentRequest = requestData.requests.find(({ name }) => name === pm.info.requestName); \r",
-					"\r",
-					"if (!currentRequest) {\r",
-					"    console.log(`Request ${pm.info.requestName} has no data.`);\r",
-					"    return;\r",
-					"}\r",
-					"\r",
-					"if (currentRequest && currentRequest.data && currentRequest.data.length > 0) {\r",
-					"    console.log(\"Size of current request data set = \" + currentRequest.data.length)\r",
-					"    const currentDataSet = currentRequest.data.shift(); //object\r",
-					"        \r",
-					"    if (currentDataSet) {\r",
-					"        Object.entries(currentDataSet).forEach(([key, value]) => {\r",
-					"            //pm.collectionVariables.set(key,value)\r",
-					"            pm.variables.set(key,value)\r",
-					"\r",
-					"        });\r",
-					"\r",
-					"        pm.collectionVariables.set(\"requestData\", JSON.stringify(requestData));\r",
-					"\r",
-					"        if (currentRequest.data.length > 0) {\r",
-					"            pm.execution.setNextRequest(pm.info.requestName);\r",
-					"        }\r",
-					"    } else {\r",
-					"        console.error('No variables found for this request.');\r",
-					"    }\r",
-					"}\r",
 					""
 				]
 			}
@@ -1486,7 +1440,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e8adfab2-c339-4aa5-af43-477d46e848af",
+				"id": "da9efe57-ebd7-4a71-9bc6-aea829b243a1",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
