@@ -2057,7 +2057,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "34b75b7e-52c5-4a62-aad4-f7af5be1486c",
+				"id": "9bd32cb3-f935-40ed-91cc-0700acf8d364",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2145,13 +2145,26 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "642979fd-2d8c-4141-a69f-b622a2759a4c",
+				"id": "2dc98300-2382-4d6b-941b-00def3bcc0b1",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
 					"/* To-do List: \r",
 					"1) code refactor --> util functions\r",
-					"*/"
+					"*/\r",
+					"\r",
+					"//Response Validation Functions\r",
+					"responseValidation = {\r",
+					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
+					"        if (pm.variables.get(varName) !== undefined && pm.variables.get(varName) !== null) {\r",
+					"            return pm.variables.get(varName);\r",
+					"        } else if (pm.environment.get(envName)) {\r",
+					"            return pm.environment.get(envName);\r",
+					"        } else {\r",
+					"            return defaultValue;\r",
+					"        }\r",
+					"    }\r",
+					"};"
 				]
 			}
 		}
