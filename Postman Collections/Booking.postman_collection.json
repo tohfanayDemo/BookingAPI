@@ -1955,7 +1955,7 @@
 						}
 					}
 				},
-				"url": "{{baseURL}}/booking/{{bookingId}}"
+				"url": "{{baseURL}}/{{endPoint}}/{{bookingId}}"
 			},
 			"response": []
 		},
@@ -2182,7 +2182,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2c21b183-29db-4967-99f7-fc5ad59e7ff4",
+				"id": "21481aa6-249c-4be1-bb75-c77d050277d3",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2281,7 +2281,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "3363b0af-c5cc-475b-8746-5bfbbd55e366",
+				"id": "edcf7839-641e-45a6-bbb4-29cf94db68b9",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2289,7 +2289,6 @@
 					"const scenarioName = pm.variables.get(\"scenarioName\");\r",
 					"const expStatusCode = pm.variables.get(\"statusCode\");\r",
 					"const expStatusLine = pm.variables.get(\"statusLine\");\r",
-					"const expMessage = pm.variables.get(\"message\");\r",
 					"\r",
 					"//Response Validation Functions\r",
 					"responseValidation = {\r",
