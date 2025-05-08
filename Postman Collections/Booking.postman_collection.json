@@ -2057,11 +2057,31 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5af85057-8618-40fc-a177-f7197e3c1f4e",
+				"id": "8ac4c370-b09d-434d-a218-1051a3a2a293",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
+					"/* UTIL functions */\r",
+					"setTestData = {\r",
+					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
+					"        if (pm.variables.get(varName) !== undefined && pm.variables.get(varName) !== null) {\r",
+					"            return pm.variables.get(varName);\r",
+					"        } else if (pm.environment.get(envName)) {\r",
+					"            return pm.environment.get(envName);\r",
+					"        } else {\r",
+					"            return defaultValue;\r",
+					"        }\r",
+					"    }\r",
+					"};\r",
 					"\r",
+					"/** Set up Environment values dynamically at run time -- execution env passed trough jenkin goals*/\r",
+					"\r",
+					"\r",
+					"\r",
+					"\r",
+					"\r",
+					"\r",
+					"/** Reading data from external json file */\r",
 					"const reservedKeys = ['requestData']; \r",
 					"Object.keys(pm.variables.toObject()).forEach(key => { \r",
 					"    if (!reservedKeys.includes(key)) { \r",
@@ -2108,24 +2128,15 @@
 					"    }\r",
 					"}\r",
 					"\r",
-					"setTestData = {\r",
-					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
-					"        if (pm.variables.get(varName) !== undefined && pm.variables.get(varName) !== null) {\r",
-					"            return pm.variables.get(varName);\r",
-					"        } else if (pm.environment.get(envName)) {\r",
-					"            return pm.environment.get(envName);\r",
-					"        } else {\r",
-					"            return defaultValue;\r",
-					"        }\r",
-					"    }\r",
-					"};"
+					"\r",
+					""
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "d0faa88c-ae0a-419f-bc14-bfd8d134696a",
+				"id": "fa415aa0-e45a-4024-aebc-df17d61aa8a3",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
