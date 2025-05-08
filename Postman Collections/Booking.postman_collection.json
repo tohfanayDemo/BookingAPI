@@ -155,6 +155,114 @@
 			"response": []
 		},
 		{
+			"name": "Negative - CreateToken Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "878eabfa-ea6f-477f-88c4-aba2cd58d6c6",
+						"exec": [
+							"// setTimeout(() => {}, 1000);\r",
+							"// const expStatusCode = pm.variables.get(\"statusCode\");\r",
+							"// const expStatusLine = pm.variables.get(\"statusLine\");\r",
+							"// const scenarioName = pm.variables.get(\"scenarioName\");\r",
+							"// const expMessage = pm.variables.get(\"message\");\r",
+							"\r",
+							"\r",
+							"// //NEGATIVE TEST VALIDATION\r",
+							"// //1. Status\r",
+							"    responseValidation.validateStatusCode_Negative();\r",
+							"\r",
+							"// //2. Status Line\r",
+							"responseValidation.validateStatusLine_Negative();\r",
+							"\r",
+							"// //3. Scenario specific Tests\r",
+							"// if(scenarioName.includes(\"Incorrect Credentials\")) {\r",
+							"//     pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+							"//         pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+							"//         pm.expect(pm.response.json().reason).to.eql(expMessage);       \r",
+							"//     });\r",
+							"// }\r",
+							"\r",
+							"responseValidation.validateResponseHeaderContentType_text();\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "50039e07-6ce6-43b4-8ff9-a7ed29c86ae8",
+						"exec": [
+							"setTimeout(() => {}, 1000);\r",
+							"var scenarioName = pm.variables.get(\"scenarioName\");\r",
+							"console.log(\"Inside pre-requisite --> Scenario Name \"+scenarioName)\r",
+							"\r",
+							"//Set the test data for the request\r",
+							"let baseURL = setTestData.getVariableOrEnv(\"baseURL\", \"baseURL\", \"\");\r",
+							"pm.variables.set(\"baseURL\",baseURL);\r",
+							"\r",
+							"\r",
+							"let endPoint = setTestData.getVariableOrEnv(\"endPoint\", \"endPoint\", \"auth\");\r",
+							"pm.variables.set(\"endPoint\",endPoint);\r",
+							"\r",
+							"let httpMethod = setTestData.getVariableOrEnv(\"httpMethod\", \"httpMethod\", \"POST\");\r",
+							"pm.request.method = httpMethod;\r",
+							"\r",
+							"//let contentType = setTestData.getVariableOrEnv(\"contentType\", \"contentType\", \"application/json\");\r",
+							"// let username = setTestData.getVariableOrEnv(\"username\", \"username\", \"\");\r",
+							"// pm.variables.set(\"username\",username);\r",
+							"\r",
+							"let password = setTestData.getVariableOrEnv(\"password\", \"password\", \"\");\r",
+							"pm.variables.set(\"password\",password);\r",
+							"\r",
+							"//Tweak data based on scenario needs\r",
+							"if(scenarioName === \"Incorrect Content-Type\"){\r",
+							"    var contentType = \"application/xml\"; \r",
+							"\r",
+							"    // Set the header for Content-Type\r",
+							"    pm.request.headers.add({\r",
+							"        key: \"Content-Type\",\r",
+							"        value: contentType\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "dec5d3f4-1060-4ebc-83d4-58da666b02b9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"bla vla\",\n    \"password\" : \"{{password}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/{{endPoint}}"
+			},
+			"response": []
+		},
+		{
 			"name": "GetAllBookings",
 			"event": [
 				{
