@@ -2057,7 +2057,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "8ac4c370-b09d-434d-a218-1051a3a2a293",
+				"id": "34b75b7e-52c5-4a62-aad4-f7af5be1486c",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2075,13 +2075,22 @@
 					"};\r",
 					"\r",
 					"/** Set up Environment values dynamically at run time -- execution env passed trough jenkin goals*/\r",
+					"pm.environment.set(\"username\", \"{{cmd_username}}\");\r",
+					"pm.environment.set(\"password\", \"{{cmd_password}}\");\r",
+					"let test_env = \"{{cmd_baseURL}}\";\r",
+					"\r",
+					"if(env == \"QA\"){\r",
+					"    pm.environment.set(\"baseURL\",\"https://restful-booker.herokuapp.com\");\r",
+					"} \r",
+					"else if(env == \"DEV\"){\r",
+					"    pm.environment.set(\"baseURL\",\"https://dev.restful-booker.herokuapp.com\");\r",
+					"}\r",
+					"else if(env == \"STAGE\"){\r",
+					"    pm.environment.set(\"baseURL\",\"https://stage.restful-booker.herokuapp.com\");\r",
+					"}\r",
 					"\r",
 					"\r",
-					"\r",
-					"\r",
-					"\r",
-					"\r",
-					"/** Reading data from external json file */\r",
+					"/** Reading data from external JSON file */\r",
 					"const reservedKeys = ['requestData']; \r",
 					"Object.keys(pm.variables.toObject()).forEach(key => { \r",
 					"    if (!reservedKeys.includes(key)) { \r",
@@ -2136,13 +2145,12 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "fa415aa0-e45a-4024-aebc-df17d61aa8a3",
+				"id": "642979fd-2d8c-4141-a69f-b622a2759a4c",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
 					"/* To-do List: \r",
 					"1) code refactor --> util functions\r",
-					"5) setup environment data dynamically\r",
 					"*/"
 				]
 			}
