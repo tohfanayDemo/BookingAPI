@@ -2164,138 +2164,6 @@
 			"response": []
 		},
 		{
-			"name": "Negative - DeleteBooking",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "7ca6ffeb-280a-4ad6-83bd-e18995435bb8",
-						"exec": [
-							"setTimeout(() => {}, 1000);\r",
-							"pm.sendRequest({\r",
-							"    url: 'https://restful-booker.herokuapp.com/auth',\r",
-							"    method: 'POST',\r",
-							"    header:{ \r",
-							"        'Content-Type': 'application/json',\r",
-							"    },\r",
-							"    body:{\r",
-							"            mode: 'raw',\r",
-							"            raw: JSON.stringify({\r",
-							"                    \"username\" : \"admin\",\r",
-							"                    \"password\" : \"password123\"\r",
-							"                })\r",
-							"    }\r",
-							"      \r",
-							"},  function(err, response){\r",
-							"    if(err){\r",
-							"        console.log(err);\r",
-							"        return;\r",
-							"    }\r",
-							"    else{\r",
-							"        const authResponse = response.json();\r",
-							"        const tokenId = authResponse.token;\r",
-							"\r",
-							"        pm.variables.set(\"token\",tokenId);\r",
-							"    }\r",
-							"}\r",
-							")\r",
-							"\r",
-							"\r",
-							"var scenarioName = pm.variables.get(\"scenarioName\");\r",
-							"console.log(\"Inside pre-requisite --> Scenario Name \"+scenarioName)\r",
-							"\r",
-							"//Set the test data for the request\r",
-							"let baseURL = setTestData.getVariableOrEnv(\"baseURL\", \"baseURL\", \"\");\r",
-							"pm.variables.set(\"baseURL\",baseURL);\r",
-							"\r",
-							"let endPoint = setTestData.getVariableOrEnv(\"endPoint\", \"endPoint\", \"booking\");\r",
-							"pm.variables.set(\"endPoint\",endPoint);\r",
-							"\r",
-							"let bookingId = setTestData.getVariableOrEnv(\"bookingId\", \"bookingId\", pm.collectionVariables.get(\"bookingId\"));\r",
-							"pm.variables.set(\"bookingId\",bookingId);\r",
-							"\r",
-							"let httpMethod = setTestData.getVariableOrEnv(\"httpMethod\", \"httpMethod\", \"GET\");\r",
-							"pm.request.method = httpMethod;\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "71dd5f2d-04f3-41c4-8a05-b7d04d403fa0",
-						"exec": [
-							"//POSITIVE TEST VALIDATION\r",
-							"    //1. Status\r",
-							"    pm.test(\"Status code is 204\", function () {\r",
-							"        pm.response.to.have.status(204);\r",
-							"    });\r",
-							"\r",
-							"    //2. Status Line\r",
-							"    pm.test(\"Status message is No Content\", function () {\r",
-							"        pm.response.to.have.status(\"No Content\");\r",
-							"    });\r",
-							"\r",
-							"    //3. Test for Content-Type header having a particular value\r",
-							"    pm.test(\"Content-Type header is application/json\", () => {\r",
-							"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
-							"    });\r",
-							"\r",
-							"\r",
-							"    //4. Check updated value in GET call\r",
-							"    pm.test(`Check Updated Booking details in GET Call`, function () {\r",
-							"\r",
-							"        // Perform GET request for a Given Booking Id\r",
-							"        pm.sendRequest({\r",
-							"            //url: pm.environment.get(\"baseURL\")+'/booking/'+ pm.collectionVariables.get(\"bookingId\"),  \r",
-							"            url: pm.environment.get(\"baseURL\")+'/booking/'+ 2602,  \r",
-							"            method: 'DELETE',\r",
-							"            header: {\r",
-							"            'Content-Type': 'application/json'\r",
-							"            }\r",
-							"        }, function (err, res) {\r",
-							"            if (err) {\r",
-							"                console.log(err);\r",
-							"                return;\r",
-							"            } else {\r",
-							"                pm.response.to.have.status(404); \r",
-							"                pm.response.to.have.status(\"Not Found\");     \r",
-							"                pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
-							"                pm.response.to.have.body(\"Not Found\");\r",
-							"            }\r",
-							"        });\r",
-							"                \r",
-							"    });\r",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"id": "ac6c7272-9aa9-40e5-a209-764292824077",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Cookie",
-						"value": "token={{token}}"
-					}
-				],
-				"url": "{{baseURL}}/{{endPoint}}/{{bookingId}}"
-			},
-			"response": []
-		},
-		{
 			"name": "DeleteBooking",
 			"event": [
 				{
@@ -2406,6 +2274,141 @@
 					}
 				],
 				"url": "{{baseURL}}/booking/{{bookingId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Negative - DeleteBooking",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7ca6ffeb-280a-4ad6-83bd-e18995435bb8",
+						"exec": [
+							"setTimeout(() => {}, 1000);\r",
+							"pm.sendRequest({\r",
+							"    url: 'https://restful-booker.herokuapp.com/auth',\r",
+							"    method: 'POST',\r",
+							"    header:{ \r",
+							"        'Content-Type': 'application/json',\r",
+							"    },\r",
+							"    body:{\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                    \"username\" : \"admin\",\r",
+							"                    \"password\" : \"password123\"\r",
+							"                })\r",
+							"    }\r",
+							"      \r",
+							"},  function(err, response){\r",
+							"    if(err){\r",
+							"        console.log(err);\r",
+							"        return;\r",
+							"    }\r",
+							"    else{\r",
+							"        const authResponse = response.json();\r",
+							"        const tokenId = authResponse.token;\r",
+							"\r",
+							"        pm.variables.set(\"token\",tokenId);\r",
+							"    }\r",
+							"}\r",
+							")\r",
+							"\r",
+							"\r",
+							"var scenarioName = pm.variables.get(\"scenarioName\");\r",
+							"console.log(\"Inside pre-requisite --> Scenario Name \"+scenarioName)\r",
+							"\r",
+							"//Set the test data for the request\r",
+							"let baseURL = setTestData.getVariableOrEnv(\"baseURL\", \"baseURL\", \"\");\r",
+							"pm.variables.set(\"baseURL\",baseURL);\r",
+							"\r",
+							"let endPoint = setTestData.getVariableOrEnv(\"endPoint\", \"endPoint\", \"booking\");\r",
+							"pm.variables.set(\"endPoint\",endPoint);\r",
+							"\r",
+							"let bookingId = setTestData.getVariableOrEnv(\"bookingId\", \"bookingId\", pm.collectionVariables.get(\"bookingId\"));\r",
+							"pm.variables.set(\"bookingId\",bookingId);\r",
+							"\r",
+							"let httpMethod = setTestData.getVariableOrEnv(\"httpMethod\", \"httpMethod\", \"DELETE\");\r",
+							"pm.request.method = httpMethod;\r",
+							"\r",
+							"if(scenarioName == \"No Auth\"){\r",
+							"    pm.variables.set(\"token\",\"\");\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "71dd5f2d-04f3-41c4-8a05-b7d04d403fa0",
+						"exec": [
+							"//POSITIVE TEST VALIDATION\r",
+							"    //1. Status\r",
+							"    pm.test(\"Status code is 204\", function () {\r",
+							"        pm.response.to.have.status(204);\r",
+							"    });\r",
+							"\r",
+							"    //2. Status Line\r",
+							"    pm.test(\"Status message is No Content\", function () {\r",
+							"        pm.response.to.have.status(\"No Content\");\r",
+							"    });\r",
+							"\r",
+							"    //3. Test for Content-Type header having a particular value\r",
+							"    pm.test(\"Content-Type header is application/json\", () => {\r",
+							"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+							"    });\r",
+							"\r",
+							"\r",
+							"    //4. Check updated value in GET call\r",
+							"    pm.test(`Check Updated Booking details in GET Call`, function () {\r",
+							"\r",
+							"        // Perform GET request for a Given Booking Id\r",
+							"        pm.sendRequest({\r",
+							"            //url: pm.environment.get(\"baseURL\")+'/booking/'+ pm.collectionVariables.get(\"bookingId\"),  \r",
+							"            url: pm.environment.get(\"baseURL\")+'/booking/'+ 2602,  \r",
+							"            method: 'DELETE',\r",
+							"            header: {\r",
+							"            'Content-Type': 'application/json'\r",
+							"            }\r",
+							"        }, function (err, res) {\r",
+							"            if (err) {\r",
+							"                console.log(err);\r",
+							"                return;\r",
+							"            } else {\r",
+							"                pm.response.to.have.status(404); \r",
+							"                pm.response.to.have.status(\"Not Found\");     \r",
+							"                pm.expect(pm.response.headers.get('Content-Type')).to.include('text/plain');\r",
+							"                pm.response.to.have.body(\"Not Found\");\r",
+							"            }\r",
+							"        });\r",
+							"                \r",
+							"    });\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "ac6c7272-9aa9-40e5-a209-764292824077",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{token}}"
+					}
+				],
+				"url": "{{baseURL}}/{{endPoint}}/{{bookingId}}"
 			},
 			"response": []
 		}
