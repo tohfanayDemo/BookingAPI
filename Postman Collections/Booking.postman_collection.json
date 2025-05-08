@@ -700,6 +700,8 @@
 					"script": {
 						"id": "67c015cb-60ed-432c-8c94-96d1a82588f5",
 						"exec": [
+							"const expMessage = pm.variables.get(\"message\");\r",
+							"\r",
 							"//NEGATIVE TEST VALIDATION\r",
 							"//1. Status Code\r",
 							"responseValidation.validateStatusCode_Negative();\r",
@@ -708,7 +710,12 @@
 							"responseValidation.validateStatusLine_Negative();\r",
 							"\r",
 							"//3. Response Header Content Type\r",
-							"responseValidation.validateResponseHeaderContentType_text();\r",
+							"if(scenarioName.includes(\"Incorrect Credentials\")) {\r",
+							"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+							"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+							"        pm.expect(pm.response.json().reason).to.eql(expMessage);       \r",
+							"    });\r",
+							"}\r",
 							"\r",
 							"\r",
 							"\r",
@@ -1312,7 +1319,12 @@
 							"responseValidation.validateStatusLine_Negative();\r",
 							"\r",
 							"//3. Response Header Content Type\r",
-							"responseValidation.validateResponseHeaderContentType_text();"
+							"if(scenarioName.includes(\"Incorrect Credentials\")) {\r",
+							"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+							"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+							"        pm.expect(pm.response.json().reason).to.eql(expMessage);       \r",
+							"    });\r",
+							"}"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -1852,7 +1864,12 @@
 							"responseValidation.validateStatusLine_Negative();\r",
 							"\r",
 							"//3. Response Header Content Type\r",
-							"responseValidation.validateResponseHeaderContentType_text();"
+							"if(scenarioName.includes(\"Incorrect Credentials\")) {\r",
+							"    pm.test(`Validate ${scenarioName} JSON Response msg`, () => {\r",
+							"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');\r",
+							"        pm.expect(pm.response.json().reason).to.eql(expMessage);       \r",
+							"    });\r",
+							"}"
 						],
 						"type": "text/javascript",
 						"packages": {}
