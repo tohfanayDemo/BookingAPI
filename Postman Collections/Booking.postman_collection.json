@@ -15,7 +15,6 @@
 						"exec": [
 							"const response = pm.response.json();\r",
 							"\r",
-							"console.log(response.token)\r",
 							"pm.variables.set(\"token\", response.token)\r",
 							"\r",
 							""
