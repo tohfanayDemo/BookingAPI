@@ -1946,7 +1946,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "68897455-c8e1-45b0-ab02-bf513df15d2e",
+				"id": "fa4e209a-02a1-46c8-9842-625bc830a094",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1963,7 +1963,7 @@
 					"    }\r",
 					"};\r",
 					"\r",
-					"/** Set up Environment values dynamically at run time*/\r",
+					"/** Set up Environment values dynamically at run time through newman command*/\r",
 					"let test_env = \"{{cmd_baseURL}}\";\r",
 					"console.log(`test_env = ${test_env}`)\r",
 					"if (typeof test_env === \"undefined\") {\r",
@@ -2046,7 +2046,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "72ce5f3f-2a9c-46fc-8cf4-27e55a08fb89",
+				"id": "b8d7de8c-c662-4b96-8665-4b4115643554",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
