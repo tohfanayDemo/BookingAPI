@@ -1946,7 +1946,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "69683fa5-064e-4ff4-9795-8a420534703d",
+				"id": "ca5a6350-63a9-4e2b-9592-5f9be408f050",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1964,8 +1964,8 @@
 					"};\r",
 					"\r",
 					"/** Set up Environment values dynamically at run time through newman command*/\r",
-					"let test_env = pm.variables.get(\"cmd_baseURL\");\r",
-					"console.log(`Resolved cmd_baseURL = ${test_env}`);\r",
+					"let test_env = pm.variables.get(\"test_env\");\r",
+					"console.log(`Env from newman = ${test_env}`);\r",
 					"\r",
 					"if (!test_env) {\r",
 					"\r",
@@ -2047,7 +2047,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b50f46d7-4f2c-4a37-8739-bc30d5a7a8e5",
+				"id": "ce501fa0-0c01-4ab4-be9e-5d86eeb21f28",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
