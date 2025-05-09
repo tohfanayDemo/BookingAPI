@@ -1946,7 +1946,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "21481aa6-249c-4be1-bb75-c77d050277d3",
+				"id": "68897455-c8e1-45b0-ab02-bf513df15d2e",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1964,13 +1964,14 @@
 					"};\r",
 					"\r",
 					"/** Set up Environment values dynamically at run time*/\r",
-					"\r",
 					"let test_env = \"{{cmd_baseURL}}\";\r",
+					"console.log(`test_env = ${test_env}`)\r",
 					"if (typeof test_env === \"undefined\") {\r",
 					"\r",
 					"    //set up default value\r",
 					"    pm.environment.set(\"username\", \"admin\");\r",
 					"    pm.environment.set(\"password\", \"password123\");\r",
+					"    pm.environment.set(\"baseURL\",\"https://restful-booker.herokuapp.com\");\r",
 					"}\r",
 					"else {\r",
 					"    //get the credentials passed through newman command line\r",
@@ -2045,7 +2046,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "edcf7839-641e-45a6-bbb4-29cf94db68b9",
+				"id": "72ce5f3f-2a9c-46fc-8cf4-27e55a08fb89",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
