@@ -1946,7 +1946,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "fa4e209a-02a1-46c8-9842-625bc830a094",
+				"id": "69683fa5-064e-4ff4-9795-8a420534703d",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -1964,9 +1964,10 @@
 					"};\r",
 					"\r",
 					"/** Set up Environment values dynamically at run time through newman command*/\r",
-					"let test_env = \"{{cmd_baseURL}}\";\r",
-					"console.log(`test_env = ${test_env}`)\r",
-					"if (typeof test_env === \"undefined\") {\r",
+					"let test_env = pm.variables.get(\"cmd_baseURL\");\r",
+					"console.log(`Resolved cmd_baseURL = ${test_env}`);\r",
+					"\r",
+					"if (!test_env) {\r",
 					"\r",
 					"    //set up default value\r",
 					"    pm.environment.set(\"username\", \"admin\");\r",
@@ -1975,16 +1976,16 @@
 					"}\r",
 					"else {\r",
 					"    //get the credentials passed through newman command line\r",
-					"    pm.environment.set(\"username\", \"{{cmd_username}}\");\r",
-					"    pm.environment.set(\"password\", \"{{cmd_password}}\");\r",
+					"    pm.environment.set(\"username\", pm.variables.get(\"cmd_username\"));\r",
+					"    pm.environment.set(\"password\", pm.variables.get(\"cmd_password\"));\r",
 					"    \r",
-					"    if(test_env == \"QA\"){\r",
+					"    if(test_env === \"QA\"){\r",
 					"    pm.environment.set(\"baseURL\",\"https://restful-booker.herokuapp.com\");\r",
 					"    } \r",
-					"    else if(test_env == \"DEV\"){\r",
+					"    else if(test_env === \"DEV\"){\r",
 					"        pm.environment.set(\"baseURL\",\"https://dev.restful-booker.herokuapp.com\");\r",
 					"    }\r",
-					"    else if(test_env == \"STAGE\"){\r",
+					"    else if(test_env === \"STAGE\"){\r",
 					"        pm.environment.set(\"baseURL\",\"https://stage.restful-booker.herokuapp.com\");\r",
 					"    }\r",
 					"}\r",
@@ -2046,7 +2047,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b8d7de8c-c662-4b96-8665-4b4115643554",
+				"id": "b50f46d7-4f2c-4a37-8739-bc30d5a7a8e5",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
