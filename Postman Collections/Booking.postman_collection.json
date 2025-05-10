@@ -598,7 +598,7 @@
 						}
 					}
 				},
-				"url": "{{baseURL}}/booking"
+				"url": "{{baseURL}}/{{endPoint}}"
 			},
 			"response": []
 		},
