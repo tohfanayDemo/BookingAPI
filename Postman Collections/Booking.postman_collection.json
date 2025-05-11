@@ -1099,8 +1099,7 @@
 							"\r",
 							"        pm.variables.set(\"token\",tokenId);\r",
 							"    }\r",
-							"}\r",
-							")\r",
+							"})\r",
 							""
 						],
 						"type": "text/javascript",
@@ -1996,7 +1995,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5e0dfe40-2c45-4bd2-a05d-cb56c490a1e9",
+				"id": "9f9e265a-ec7a-4753-866e-402c35c60453",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2024,10 +2023,19 @@
 					"\r",
 					"/** Utility Functions */\r",
 					"util = {\r",
-					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
+					"    /*getVariableOrEnv: function (varName, envName, defaultValue) {\r",
 					"        if (pm.variables.get(varName) !== undefined && pm.variables.get(varName) !== null) {\r",
 					"            return pm.variables.get(varName);\r",
 					"        } else if (pm.environment.get(envName)) {\r",
+					"            return pm.environment.get(envName);\r",
+					"        } else {\r",
+					"            return defaultValue;\r",
+					"        }\r",
+					"    }*/\r",
+					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
+					"        if (Object.prototype.hasOwnProperty.call(pm.variables.toObject(), varName)) {\r",
+					"            return pm.variables.get(varName);\r",
+					"        } else if (Object.prototype.hasOwnProperty.call(pm.environment.toObject(), envName)) {\r",
 					"            return pm.environment.get(envName);\r",
 					"        } else {\r",
 					"            return defaultValue;\r",
@@ -2058,9 +2066,6 @@
 					"    console.log(`Retry in progress (count = ${retryCount}) — skipping data shifting.`);\r",
 					"   return;\r",
 					"}\r",
-					"\r",
-					"console.log(\"Entering data reading block\")\r",
-					"console.log(\"=============================================================\")\r",
 					"\r",
 					"\r",
 					"/** Reading data from external JSON file */\r",
@@ -2100,7 +2105,8 @@
 					"\r",
 					"        let requestSet = [\"Negative - CreateBooking\",\"Negative - UpdateBooking\",\"PartialUpdateBooking\"];\r",
 					"        if(requestSet.includes(currentRequest.name)){\r",
-					"            pm.variables.set('currentDataset', currentDataSet);        \r",
+					"            //pm.variables.set('currentDataset', JSON.stringify(currentDataSet)); //pass in the form of string\r",
+					"            pm.variables.set('currentDataset', currentDataSet); //just pass as an object        \r",
 					"        }\r",
 					"\r",
 					"        // Store updated requestData (after the shift) with remaining tests\r",
@@ -2121,7 +2127,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d30af1bd-6f67-44a1-9d84-4467b10f709b",
+				"id": "7cd38d37-4c34-4111-96d4-9a4d8c65a483",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
