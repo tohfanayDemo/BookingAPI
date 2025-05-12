@@ -258,7 +258,11 @@
 							"    var retryCount = pm.collectionVariables.get('retryCounter');\r",
 							"\r",
 							"    if (retryCount >= 1) {\r",
+							"        console.log(`BEFORE -- retrycounter value at post response level = ${retryCount}`)        \r",
 							"        pm.collectionVariables.set('retryCounter', --retryCount)\r",
+							"        console.log(`AFTER -- retrycounter value at post response level = `+pm.collectionVariables.get('retryCounter'))\r",
+							"\r",
+							"        //this gives this request name , you don't have to hardcode\r",
 							"        pm.execution.setNextRequest(pm.info.requestName);\r",
 							"    }else{\r",
 							"        pm.collectionVariables.unset('retryCounter');\r",
@@ -278,7 +282,7 @@
 							"//3. Response Header Content Type\r",
 							"if(scenarioName.includes(\"Incorrect BaseURL\")) {\r",
 							"    pm.test(`Validate ${scenarioName} - Content-Type header is text/html`, () => {\r",
-							"        pm.expect(pm.response.headers.get('Content-Type')).to.includes('text/html');\r",
+							"        pm.expect(pm.response.headers.get('Content-Type')).to.include('text/html');\r",
 							"    });\r",
 							"}else{\r",
 							"    responseValidation.validateResponseHeaderContentType_text();\r",
@@ -313,8 +317,6 @@
 							"   pm.collectionVariables.set('retryCounter',(2));\r",
 							"   console.log(`retrycounter value at PRE-REQUEST Script level = `+pm.collectionVariables.get('retryCounter'))\r",
 							"}\r",
-							"\r",
-							"\r",
 							"\r",
 							"\r",
 							"\r",
@@ -465,8 +467,6 @@
 							"                const count = bookings.length; \r",
 							"                \r",
 							"                    pm.expect(bookings).to.include(bookingID);\r",
-							"                    //console.log(\"Total count BEFORE creating booking = \" + pm.collectionVariables.get(\"totalCountBeforeBooking\"))                    \r",
-							"                    //console.log(\"Total count AFTER creating booking = \" + count)\r",
 							"                    pm.expect(count).to.equal((pm.collectionVariables.get(\"totalCountBeforeBooking\"))+1);                 \r",
 							"            }\r",
 							"        });\r",
@@ -476,7 +476,6 @@
 							"    //Set bookingId at collection level\r",
 							"    const bookingID = response.bookingid\r",
 							"    pm.collectionVariables.set(\"bookingId\", bookingID)\r",
-							"    //pm.variables.set(\"bookingId\", bookingID)\r",
 							"\r",
 							"    //SET VALUE AT RUN TIME\r",
 							"    const booking = {\r",
@@ -489,8 +488,8 @@
 							"        \"additionalneeds\": additionalneeds\r",
 							"    }\r",
 							"\r",
-							"    pm.collectionVariables.set(\"booking\", JSON.stringify(booking));\r",
-							"    //pm.variables.set(\"booking\", JSON.stringify(booking));\r",
+							"    pm.collectionVariables.set(\"booking\", booking);\r",
+							" \r",
 							""
 						],
 						"type": "text/javascript",
@@ -2074,7 +2073,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "9f9e265a-ec7a-4753-866e-402c35c60453",
+				"id": "c6435d5a-561b-4ee8-8a03-91b0e4ed061f",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2102,15 +2101,6 @@
 					"\r",
 					"/** Utility Functions */\r",
 					"util = {\r",
-					"    /*getVariableOrEnv: function (varName, envName, defaultValue) {\r",
-					"        if (pm.variables.get(varName) !== undefined && pm.variables.get(varName) !== null) {\r",
-					"            return pm.variables.get(varName);\r",
-					"        } else if (pm.environment.get(envName)) {\r",
-					"            return pm.environment.get(envName);\r",
-					"        } else {\r",
-					"            return defaultValue;\r",
-					"        }\r",
-					"    }*/\r",
 					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
 					"        if (Object.prototype.hasOwnProperty.call(pm.variables.toObject(), varName)) {\r",
 					"            return pm.variables.get(varName);\r",
@@ -2138,7 +2128,6 @@
 					"\r",
 					"\r",
 					"/** Retry-aware data loading logic - Skip data handling if a retry is in progress*/\r",
-					"\r",
 					"var retryCount = pm.collectionVariables.get('retryCounter');\r",
 					"if (retryCount) {\r",
 					"    console.log(`retrycounter value at collection level = ${retryCount}`)\r",
@@ -2198,15 +2187,14 @@
 					"    } else {\r",
 					"        console.error('No variables found for this request.');\r",
 					"    }\r",
-					"}\r",
-					""
+					"}"
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "7cd38d37-4c34-4111-96d4-9a4d8c65a483",
+				"id": "bbeb52a5-decf-4e05-9ba4-97ce3886c650",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
