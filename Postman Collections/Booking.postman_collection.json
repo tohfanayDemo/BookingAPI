@@ -1228,6 +1228,7 @@
 							"let httpMethod = util.getVariableOrEnv(\"httpMethod\", \"httpMethod\", \"PUT\");\r",
 							"pm.request.method = httpMethod;\r",
 							"\r",
+							"//work on setup for no auth scenario\r",
 							"if(scenarioName === \"Incorrect Content-Type\"){\r",
 							"    var contentType = \"application/xml\"; \r",
 							"\r",
@@ -1269,7 +1270,7 @@
 						}
 					}
 				},
-				"url": "{{baseURL}}/booking/{{bookingId}}"
+				"url": "{{baseURL}}/{{endPoint}}/{{bookingId}}"
 			},
 			"response": []
 		},
@@ -1281,7 +1282,7 @@
 					"script": {
 						"id": "682b6490-3914-42df-aebd-23ef54cc4c6c",
 						"exec": [
-							"const booking = JSON.parse(pm.collectionVariables.get(\"booking\"));\r",
+							"const booking = pm.collectionVariables.get(\"booking\");\r",
 							"pm.variables.set(\"bookingFirstName\",booking.firstname)\r",
 							"pm.variables.set(\"bookingLastName\",booking.lastname)\r",
 							""
