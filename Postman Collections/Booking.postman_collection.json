@@ -1085,8 +1085,8 @@
 							"    body:{\r",
 							"            mode: 'raw',\r",
 							"            raw: JSON.stringify({\r",
-							"                    \"username\" : \"admin\",\r",
-							"                    \"password\" : \"password123\"\r",
+							"                    \"username\" : pm.environment.get(\"username\"),\r",
+							"                    \"password\" : pm.environment.get(\"password\")\r",
 							"                })\r",
 							"    }\r",
 							"      \r",
@@ -1196,8 +1196,8 @@
 							"        body:{\r",
 							"                mode: 'raw',\r",
 							"                raw: JSON.stringify({\r",
-							"                        \"username\" : \"admin\",\r",
-							"                        \"password\" : \"password123\"\r",
+							"                    \"username\" : pm.environment.get(\"username\"),\r",
+							"                    \"password\" : pm.environment.get(\"password\")\r",
 							"                    })\r",
 							"        }\r",
 							"        \r",
@@ -1670,8 +1670,8 @@
 							"    body:{\r",
 							"            mode: 'raw',\r",
 							"            raw: JSON.stringify({\r",
-							"                    \"username\" : \"admin\",\r",
-							"                    \"password\" : \"password123\"\r",
+							"                    \"username\" : pm.environment.get(\"username\"),\r",
+							"                    \"password\" : pm.environment.get(\"password\")\r",
 							"                })\r",
 							"    }\r",
 							"      \r",
@@ -1980,7 +1980,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c6435d5a-561b-4ee8-8a03-91b0e4ed061f",
+				"id": "cb4f7f91-b674-48d7-9e15-5df99f544927",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2080,8 +2080,7 @@
 					"\r",
 					"        let requestSet = [\"Negative - CreateBooking\",\"Negative - UpdateBooking\",\"PartialUpdateBooking\"];\r",
 					"        if(requestSet.includes(currentRequest.name)){\r",
-					"            //pm.variables.set('currentDataset', JSON.stringify(currentDataSet)); //pass in the form of string\r",
-					"            pm.variables.set('currentDataset', currentDataSet); //just pass as an object        \r",
+					"            pm.variables.set('currentDataset', currentDataSet);     \r",
 					"        }\r",
 					"\r",
 					"        // Store updated requestData (after the shift) with remaining tests\r",
@@ -2101,7 +2100,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "bbeb52a5-decf-4e05-9ba4-97ce3886c650",
+				"id": "f43ff5fb-0db8-4cd4-8b38-2ff81b6c7bd5",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
