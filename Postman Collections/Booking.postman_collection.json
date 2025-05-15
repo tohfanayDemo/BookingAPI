@@ -1788,7 +1788,7 @@
 							"}\r",
 							")\r",
 							"\r",
-							""
+							"pm.request.method = \"DELETE\";"
 						],
 						"type": "text/javascript",
 						"packages": {}
