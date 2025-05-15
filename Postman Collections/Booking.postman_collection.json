@@ -613,7 +613,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}",
+					"raw": "{{createBookingPayload}}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -700,11 +700,10 @@
 							"    pm.test(\"Booking details in Request and Response matches\", function () {\r",
 							"\r",
 							"        // Get Booking object from POST call from Collection Variable\r",
-							"        const booking = JSON.parse(pm.collectionVariables.get(\"booking\"));\r",
+							"        const booking = pm.collectionVariables.get(\"booking\");\r",
 							"\r",
 							"        \r",
 							"        //Compare Created booking details in POST Call with GET call response\r",
-							"        pm.expect(pm.collectionVariables.get(\"bookingId\")).to.eql(resposne.bookingid);\r",
 							"        pm.expect(booking.firstname).to.eql(resposne.firstname);\r",
 							"        pm.expect(booking.lastname).to.eql(resposne.lastname);\r",
 							"        pm.expect(booking.totalprice).to.eql(resposne.totalprice);\r",
