@@ -1737,7 +1737,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\" : \"Jim Update\"\r\n    // \"lastname\" : \"Partial2\",\r\n    // \"totalprice\" : 150\r\n    \r\n}",
+					"raw": "\r\n    {{partialUpdateBookingPayload}}",
 					"options": {
 						"raw": {
 							"language": "json"
