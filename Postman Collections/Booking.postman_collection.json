@@ -1813,7 +1813,7 @@
 							"        pm.sendRequest({\r",
 							"            url: pm.environment.get(\"baseURL\")+'/booking/'+ pm.collectionVariables.get(\"bookingId\"),  \r",
 							"            //url: pm.environment.get(\"baseURL\")+'/booking/'+ 2602,  \r",
-							"            method: 'DELETE',\r",
+							"            method: 'GET',\r",
 							"            header: {\r",
 							"            'Content-Type': 'application/json'\r",
 							"            }\r",
