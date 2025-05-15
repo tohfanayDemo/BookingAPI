@@ -820,7 +820,7 @@
 						"id": "bcd6be8b-c032-44b5-a4ea-3d6b805d207a",
 						"exec": [
 							"// Get Booking object from POST call from Collection Variable\r",
-							"const booking = JSON.parse(pm.collectionVariables.get(\"booking\"));\r",
+							"const booking = pm.collectionVariables.get(\"booking\");\r",
 							"\r",
 							"pm.variables.set(\"checkin\", booking.checkin);\r",
 							"pm.variables.set(\"checkout\", booking.checkout);\r",
@@ -837,7 +837,6 @@
 						"exec": [
 							"const response = pm.response.json();\r",
 							"const responseSize = response.length;\r",
-							"console.log(responseSize);\r",
 							"\r",
 							"const checkinDate = pm.variables.get(\"checkin\")\r",
 							"const checkoutDate = pm.variables.get(\"checkout\")\r",
