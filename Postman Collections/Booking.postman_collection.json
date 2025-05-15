@@ -1980,7 +1980,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "4fea0ea1-7604-41f5-8c66-3fa8e12b2de6",
+				"id": "7d8ed914-b5bb-4639-84ad-be24fbf813f6",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2051,13 +2051,9 @@
 					"                console.log(\"Auth error:\", err);\r",
 					"                return;\r",
 					"            }\r",
-					"            const json = res.json();\r",
-					"            const token = json.token;\r",
+					"            const token = res.json().token;\r",
 					"            pm.variables.set(\"token\", token);\r",
 					"\r",
-					"            if (callback && typeof callback === 'function') {\r",
-					"                callback(token);\r",
-					"            }\r",
 					"        });\r",
 					"    }\r",
 					"};\r",
@@ -2129,7 +2125,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "4dbb9f60-cf54-41a2-a103-773c624cb551",
+				"id": "a5c17764-010b-4eba-82e5-4bba8db7639e",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
