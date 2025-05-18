@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         EMAIL_SUBJECT = "Booking API Test Report - ${env.JOB_NAME} #${env.BUILD_TAG}"
-        RECIPIENTS = "tohfa.nay@gmail.com, tnselenium@gmail.com"
+        RECIPIENTS = "tohfa.nay@gmail.com"
         THRESHOLD = 80
     }
 
@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/tohfanayDemo/trial.git'
+                git url: 'https://github.com/tohfanayDemo/BookingAPI.git'
             }
         }
 
@@ -46,7 +46,6 @@ pipeline {
         stage('Run Newman Tests') {
             steps {
                 script {
-                    // Create reports folder if not exists
                     bat 'if not exist "%WORKSPACE%\\reports" mkdir "%WORKSPACE%\\reports"'
 
                     withCredentials([usernamePassword(credentialsId: "${env.CREDS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -64,9 +63,6 @@ pipeline {
                             --env-var cmd_username=%USERNAME% ^
                             --env-var cmd_password=%PASSWORD% ^
                             || exit 0
-                            //^ --> means next line in Windows OS
-                            //exit 0 - This tells Jenkins: "Even if Newman fails (exit code 1), treat this step as successful so the next stages can run."
-                            //--reporter-htmlextra-includeAssets --> Generates all CSS/JS/assets locally in the reports folder
                         """
                     }
                 }
@@ -82,13 +78,13 @@ pipeline {
                     def passed = total - failed
                     def passRate = (passed / total) * 100
 
-                    echo "✅ Passed: ${passed} / ${total} (${passRate.toInteger()}%)"
+                    echo "Passed: ${passed} / ${total} (${passRate.toInteger()}%)"
 
                     if (passRate >= THRESHOLD.toInteger()) {
-                        echo "✅ Pass rate is above threshold (${THRESHOLD}%)"
+                        echo "Pass rate is above threshold (${THRESHOLD}%)"
                     } else {
                         currentBuild.result = 'FAILURE'
-                        error("❌ Pass rate (${passRate.toInteger()}%) is below threshold (${THRESHOLD}%)")
+                        error("Pass rate (${passRate.toInteger()}%) is below threshold (${THRESHOLD}%)")
                     }
                 }
             }
@@ -97,10 +93,8 @@ pipeline {
 
     post {
         always {
-            // Archive all generated reports
             archiveArtifacts artifacts: 'reports/**/*', fingerprint: true
 
-            // Publish HTML Extra report
             publishHTML(target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -110,7 +104,6 @@ pipeline {
                 reportName: 'Booking API Test Report'
             ])
 
-            // Publish Allure results (requires Allure Jenkins plugin and setup)
             allure([
                 includeProperties: false,
                 jdk: '',
@@ -118,7 +111,6 @@ pipeline {
                 results: [[path: 'reports/allure-results']]
             ])
 
-            // Always send email with HTML report attached
             emailext(
                 subject: "${EMAIL_SUBJECT}",
                 body: """Test execution completed.<br>
@@ -134,7 +126,7 @@ pipeline {
 
         failure {
             mail to: "${RECIPIENTS}",
-                 subject: "❌ FAILED: ${EMAIL_SUBJECT}",
+                 subject: "FAILED: ${EMAIL_SUBJECT}",
                  body: "The Booking API test pipeline failed. Check Jenkins for full logs."
         }
     }
