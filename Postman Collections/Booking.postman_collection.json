@@ -1984,7 +1984,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "7c9972fb-ab69-4c72-ba8d-cd1d5dd6ebb1",
+				"id": "094b6d78-ba65-4025-bd8b-4b25a1d6ac1f",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -2010,7 +2010,7 @@
 					"    }\r",
 					"}\r",
 					"\r",
-					"/** Utility Functions */\r",
+					"/** Util Functions */\r",
 					"util = {\r",
 					"    getVariableOrEnv: function (varName, envName, defaultValue) {\r",
 					"        if (Object.prototype.hasOwnProperty.call(pm.variables.toObject(), varName)) {\r",
@@ -2104,7 +2104,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "226ff273-3b1d-4cb0-a86a-dbb8c68c16b9",
+				"id": "57bd77f3-3da5-4319-b402-a21952e7fbf4",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
