@@ -50,7 +50,7 @@ pipeline {
 
                     withCredentials([usernamePassword(credentialsId: "${env.CREDS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         bat """
-                            newman run "%WORKSPACE%\\Booking.postman_collection.json" ^
+                            newman run "%WORKSPACE%\\Postman Collections\\Booking.postman_collection.json" ^
                             -e "%WORKSPACE%\\Booking.postman_environment.json" ^
                             -d "%WORKSPACE%\\bookingAPI_testData.json" ^
                             -r cli,json,junit,html,htmlextra,allure ^
