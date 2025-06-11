@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "8ae0a803-84e5-450a-a9f8-3d14f1d9be78",
 		"name": "Booking",
+		"description": "API Documentation: [https://restful-booker.herokuapp.com/apidoc/index.html](https://restful-booker.herokuapp.com/apidoc/index.html)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
